@@ -23,7 +23,7 @@ const NavBar = () => {
 
 
       {open && (
-        <div className='flex flex-col text-2xl bg-red-500 h-[calc(100vh-96px)] text-white items-center justify-center gap-6'>
+        <div className='flex flex-col text-2xl bg-red-500 h-[calc(100vh-96px)] text-white items-center justify-center gap-6'>        
           <Link href="/" onClick={()=> setOpen(false)}>HOME</Link>
           <Link href="/" onClick={()=> setOpen(false)}>MENU</Link>
           <Link href="/" onClick={()=> setOpen(false)}>WORKING HOURS</Link>
