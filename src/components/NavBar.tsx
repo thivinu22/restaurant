@@ -32,9 +32,9 @@ const NavBar = () => {
       {/* RIGHT LINKS */}
 
       <div className='hidden md:flex gap-4 items-center flex-1 justify-end'>
-          <div className='md:absolute top-3 r-2 lg:static flex gap-2 bg-orange-300 px-1 rounded-md'>
+          <div className='md:absolute top-3 w-32 r-2 lg:static flex gap-2 bg-orange-300 px-1 rounded-md'>
             <Image src="/phone.png" alt='' width={20} height={20}/>
-            <span>555 77 00</span>
+            <span className=''>555 77 00</span>
           </div>
 
 
