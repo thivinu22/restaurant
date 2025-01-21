@@ -17,7 +17,7 @@ const page = () => {
 
  
           {/* FORM CONTAINER */}
-          <div className='flex flex-col p-10 gap-8 w-1/2'>
+          <div className='flex flex-col p-10 gap-8 md:w-1/2'>
             <h1 className='font-bold text-xl xl:text-3xl'>Welcome</h1>
             <p>Login to your account or create new one using social buttons</p>
             <button className='flex gap-4 p-4 ring-1 ring-orange-100 rounded-md'>
