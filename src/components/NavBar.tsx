@@ -3,6 +3,7 @@ import Menu from './Menu'
 import Link from 'next/link'
 import Image from 'next/image'
 import CartIcon from './CartIcon'
+import UserLinks from './UserLinks'
 
 const user = false;
 
@@ -37,10 +38,9 @@ const NavBar = () => {
             <span className=''>555 77 00</span>
           </div>
 
+          <UserLinks/>
 
-          {!user ? <Link href='/login'>Login</Link> : <Link href='/orders'>Orders</Link>}
-
-          <Link href='/orders'>Orders</Link>
+          {/* <Link href='/orders'>Orders</Link> */}
 
           <Link href='/cart'><CartIcon/></Link>
       </div>
