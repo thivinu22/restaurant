@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 
 type props = {
     price : number,
-    id : number,
+    id : string,
     options?: { title: string; additionalPrice: number }[] 
 }
 
@@ -17,18 +17,18 @@ const Price = ({price,id,options} : props) => {
 
 
     useEffect(() => {
-        setTotal((quantity * (options? price + options[selected].additionalPrice: price)))
+        setTotal((quantity * (options?.length ? price + options[selected].additionalPrice : price)))
     },[quantity,selected,options,price]);
 
   return (
     <div className='flex flex-col gap-4'>
         
-            <h2 className='font-bold text-2xl'>${total.toFixed(2)}</h2>
+            <h2 className='font-bold text-2xl'>${total}</h2>
             
             
             {/* OPTIONS CONTAINER */}
             <div className='flex gap-4'>
-                {options?.map((option,index) => (
+                {options?.length && options?.map((option,index) => (
                     <button className='min-w-[6rem] p-2 ring-1 ring-red-500 rounded-md' key={option.title}
                     style={{
                         background: selected === index ? "rgb(248 113 113)" : "white",
