@@ -32,7 +32,7 @@ export const useCartStore = create(persist<CartType & ActionTypes>((set, get) =>
             } : item )
 
             set((state) => ({
-                products: [...state.products, item],
+                products: updatedProducts,
                 totalItems: state.totalItems + item.quantity,
                 totalPrice: state.totalPrice + item.price
             }))
@@ -47,14 +47,17 @@ export const useCartStore = create(persist<CartType & ActionTypes>((set, get) =>
                 totalPrice: state.totalPrice + item.price,
             }));
         }
-
+        
 
     },
-    removeFromCart(item) { 
+    removeFromCart(item) {     
         set((state) => ({
             products: state.products.filter((product) => product.id !== item.id),
             totalItems: state.totalItems - item.quantity,
             totalPrice: state.totalPrice - item.price,
+
+            // totalItems: 0,
+            // totalPrice: 0,
         }));
     }
 }), {name:"cart", skipHydration:true}))

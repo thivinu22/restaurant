@@ -3,6 +3,7 @@ import { Producttype } from '@/types/types';
 import { useCartStore } from '@/utils/store';
 import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify';
+
  
 
 const Price = ({product} : {product : Producttype}) => {
@@ -17,7 +18,7 @@ const Price = ({product} : {product : Producttype}) => {
         useCartStore.persist.rehydrate();
     },[])
 
-
+ 
     useEffect(() => {
 
 

@@ -2,6 +2,8 @@
 import { useCartStore } from '@/utils/store'
 import Image from 'next/image'
 import React, { useEffect } from 'react'
+import { persist } from "zustand/middleware";
+
 
 const page = () => {
 
@@ -28,7 +30,7 @@ const page = () => {
                   <h1 className='uppercase text-xl font-bold'>{item.title} x {item.quantity}</h1>
                   <span>{item.optionTitle}</span>
                 </div>
-                <span className='font-bold'>${item.price}</span>
+                <span className='font-bold'>${Number(item.price).toFixed(2)}</span>
                 <button className='cursor-pointer' onClick={() => removeFromCart(item)}>X</button>
               </div>
  
@@ -59,7 +61,7 @@ const page = () => {
 
           <div className='flex justify-between'>
             <span>Total (Incl. VAT)</span>
-            <span className='font-bold'>$79.90</span>
+            <span className='font-bold'>${totalPrice}</span>
           </div>
 
 
