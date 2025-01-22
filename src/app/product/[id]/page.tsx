@@ -2,6 +2,7 @@ import Price from '@/components/Price'
 import { Producttype } from '@/types/types';
 // import { singleProduct } from '@/data'
 import Image from 'next/image'
+import { NextRequest, NextResponse } from 'next/server';
 import React from 'react'
 
 const getData = async (id:string) => {
@@ -14,6 +15,8 @@ const getData = async (id:string) => {
   }
   return res.json();
 }
+
+
 
 const page = async ({params} : {params : {id:string}}) => {
 

@@ -1,9 +1,15 @@
+"use client"
+import { useCartStore } from '@/utils/store'
 import Image from 'next/image'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 const page = () => {
 
-  
+  const {products, totalItems, totalPrice, removeFromCart} = useCartStore();  
+
+  useEffect(() => {
+          useCartStore.persist.rehydrate();
+  },[])
 
 
   return (
@@ -13,35 +19,21 @@ const page = () => {
       <div className='h-1/2 p-4 flex flex-col justify-center overflow-scroll lg:h-full lg:w-2/3 xl:w-1/2 lg:p-20 xl:p-40'>
 
           {/* SINGLE ITEM CONTAINER */}
-          <div className='flex justify-between items-center mb-4'>
-            <Image src="/temporary/p1.png" alt='' width={100} height={100}/>
-            <div className='flex flex-col'>
-              <h1 className='uppercase text-xl font-bold'>scilian</h1>
-              <span>Large</span>
-            </div>
-            <span className='font-bold'>$79.90</span>
-            <button className='cursor-pointer'>X</button>
-          </div>
+          
+          {products.map((item) => (
 
-          <div className='flex justify-between items-center mb-4'>
-            <Image src="/temporary/p1.png" alt='' width={100} height={100}/>
-            <div className='flex flex-col'>
-              <h1 className='uppercase text-xl font-bold'>scilian</h1>
-              <span>Large</span>
-            </div>
-            <span className='font-bold'>$79.90</span>
-            <button className='cursor-pointer'>X</button>
-          </div>
-
-          <div className='flex justify-between items-center mb-4'>
-            <Image src="/temporary/p1.png" alt='' width={100} height={100}/>
-            <div className='flex flex-col'>
-              <h1 className='uppercase text-xl font-bold'>scilian</h1>
-              <span>Large</span>
-            </div>
-            <span className='font-bold'>$79.90</span>
-            <button className='cursor-pointer'>X</button>
-          </div>
+              <div className='flex justify-between items-center mb-4' key={item.id}>
+                {item.img && (<Image src={item.img} alt='' width={100} height={100}/>)}
+                <div className='flex flex-col'>
+                  <h1 className='uppercase text-xl font-bold'>{item.title} x {item.quantity}</h1>
+                  <span>{item.optionTitle}</span>
+                </div>
+                <span className='font-bold'>${item.price}</span>
+                <button className='cursor-pointer' onClick={() => removeFromCart(item)}>X</button>
+              </div>
+ 
+          )) 
+          } 
 
 
       </div>
@@ -50,8 +42,8 @@ const page = () => {
       {/* PAYMENT CONTAINER */}
       <div className='h-1/2 p-4 bg-fuchsia-50 flex flex-col gap-4 justify-center lg:h-full lg:w-1/3 xl:w-1/2 lg:p-20 xl:p-40 xl:text-xl xl:gap-6'>
           <div className='flex justify-between'>
-            <span>Subtotal (3 items)</span>
-            <span>$79.90</span>
+            <span>Subtotal ({totalItems} items)</span>
+            <span>${totalPrice}</span>
           </div>
       
           <div className='flex justify-between'>
