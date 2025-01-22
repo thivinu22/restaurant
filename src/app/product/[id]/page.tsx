@@ -40,10 +40,10 @@ const page = async ({params} : {params : {id:string}}) => {
       <div className='h-1/2 flex flex-col gap-4 md:h-[70%] md:gap-6 lg:gap-8 md:justify-center'>
         <h1 className='text-3xl xl:text-5xl font-bold uppercase'>{singleProduct.title}</h1>
         <p>{singleProduct.desc}</p>
-        <Price price={singleProduct .price} id={singleProduct.id} options={singleProduct.options}/>
+        <Price product={singleProduct}/>
       </div>
 
-    </div>
+    </div> 
   )
 }
 
